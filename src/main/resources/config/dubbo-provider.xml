@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://code.alibabatech.com/schema/dubbo 
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+	
+    <dubbo:application name="jx-log-collect"/>
+    <dubbo:protocol name="dubbo" port="${dubbo.port}" threadpool="fixed"  threads="100"/>
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}"/>
+    <!--服务端-->
+    <dubbo:provider filter="traceProviderFilter" timeout="8000" retries="0"/>
+    <!--调用端-->
+    <dubbo:consumer filter="traceConsumerFilter" timeout="8000" retries="0"/>
+</beans>

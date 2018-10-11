@@ -21,7 +21,7 @@ public class JxKConsumeServer extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JxKConsumeServer.class, args);
-		 log.info("-----------JxLogCollectServer 启动成功");
+		 log.info("-----------JxKConsumeServer 启动成功");
 	}
 	
 
